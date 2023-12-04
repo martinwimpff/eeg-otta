@@ -134,12 +134,9 @@ class BCICIV2aLOSO(BaseDataModule):
              zip(val_datasets, train_subjects)])
 
         # align data
-        X, X_val = align(self.preprocessing_dict["alignment"], X, X_test, X_val,
-                         train_domains=train_domains, val_domains=val_domains,)
-
-        if self.preprocessing_dict["alignment_strategy"] != "global":
-            _, X_test = align(self.preprocessing_dict["alignment"], X_test_T, None,
-                              X_test)
+        X, X_val = align(self.preprocessing_dict["alignment"], X, X_val,
+                         train_domains=train_domains, test_domains=val_domains)
+        _, X_test = align(self.preprocessing_dict["alignment"], X_test_T, X_test)
 
         # make datasets
         self.train_dataset = BaseDataModule._make_tensor_dataset(X, y)
@@ -222,12 +219,9 @@ class BCICIV2bLOSO(BaseDataModule):
                                  test_dataset.datasets], axis=0)
 
         # align data
-        X, X_val = align(self.preprocessing_dict["alignment"], X, X_test, X_val,
-                         train_domains=train_domains, val_domains=val_domains)
-
-        if self.preprocessing_dict["alignment_strategy"] != "global":
-            _, X_test = align(self.preprocessing_dict["alignment"], X_test_cal, None,
-                              X_test)
+        X, X_val = align(self.preprocessing_dict["alignment"], X, X_val,
+                         train_domains=train_domains, test_domains=val_domains)
+        _, X_test = align(self.preprocessing_dict["alignment"], X_test_cal, X_test)
 
         # make datasets
         self.train_dataset = BaseDataModule._make_tensor_dataset(X, y)
