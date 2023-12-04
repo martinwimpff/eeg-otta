@@ -1,0 +1,9 @@
+source_run: "src-bcic2a_loso_2023-12-04_14-40-57"
+tta_method: "norm"
+tta_config:
+  norm: "norm_test"  # ["norm_test", "norm_alpha", "robust_norm"]
+  # alpha: 0.1  # only for norm_alpha and robust_norm
+  alignment: False # ["euclidean", "riemann"]
+  # averaging_method: "equal"  # ["equal", "linear", "ema"]
+  # align_alpha: 0.1  # only for averaging_method ema
+  buffer_length: 32

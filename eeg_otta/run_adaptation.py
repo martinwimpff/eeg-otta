@@ -14,7 +14,7 @@ from utils.seed import seed_everything
 
 CHECKPOINT_PATH = os.path.join(Path(__file__).resolve().parents[1], "checkpoints")
 CONFIG_DIR = os.path.join(Path(__file__).resolve().parents[1], "configs")
-DEFAULT_CONFIG = "tta_alignment.yaml"
+DEFAULT_CONFIG = "tta_entropy_minimization.yaml"
 
 
 def run_adaptation(config):
@@ -42,7 +42,7 @@ def run_adaptation(config):
 
         # load checkpoint
         ckpt_path = os.path.join(CHECKPOINT_PATH, config["source_run"], str(subject_id),
-                                 "model.ckpt")
+                                 "model-v1.ckpt")
         model = model_cls.load_from_checkpoint(ckpt_path, map_location=device)
 
         # set subject_id
@@ -54,6 +54,7 @@ def run_adaptation(config):
 
         acc = get_accuracy(model, datamodule.test_dataloader(), device)
         test_accs.append(acc)
+        print(f"test_acc subject {subject_id}: {100 *test_accs[-1]:.2f}%")
 
     # print overall test accuracy
     print(f"test_acc: {100 * np.mean(test_accs):.2f}")

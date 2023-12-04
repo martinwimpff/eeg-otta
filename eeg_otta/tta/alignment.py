@@ -44,7 +44,7 @@ class OnlineAlignment(TTAMethod):
     def _calculate_weights(n_trials: int, averaging_method: str, alpha: float = None):
         if averaging_method == "equal":
             weights = None
-        elif averaging_method == "zanini":
+        elif averaging_method == "linear":
             weights = np.arange(1, n_trials + 1) / n_trials
         elif averaging_method == "ema":
             assert alpha is not None

@@ -1,6 +1,6 @@
-source_run: "src-bcic2a_within_2023-12-04_09-11-21"
+source_run: # Insert your checkpoint dir here
 tta_method: "alignment"
 tta_config:
-  alignment: "euclidean"
-  averaging_method: "equal"
+  alignment: "euclidean"  # ["euclidean", "riemann"]
+  averaging_method: "equal"  # ["equal", "linear", "ema"]
   buffer_length: 64

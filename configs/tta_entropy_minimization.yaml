@@ -1,0 +1,12 @@
+source_run: "src-bcic2a_loso_2023-12-04_14-41-13"
+tta_method: "entropy_minimization"
+tta_config:
+  alignment: "riemann" # [False, "euclidean", "riemann"]
+  averaging_method: "ema"  # ["equal", "linear", "ema"]
+  align_alpha: 0.1
+  buffer_length: 32
+  optimizer: "Adam"
+  optimizer_kwargs:
+    lr: 0.0005
+    beta: 0.9
+    weight_decay: 0.0

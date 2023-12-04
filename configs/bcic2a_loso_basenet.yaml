@@ -1,5 +1,5 @@
 # general
-dataset_name: "bcic2a_cross"
+dataset_name: "bcic2a_loso"
 subject_ids: "all"  # either "all" or integer
 max_epochs: 1000
 seed: 0
@@ -11,7 +11,7 @@ preprocessing:
   high_cut: 40
   start: 0.0
   stop: 0.0
-  alignment: False
+  alignment: "riemann"
   batch_size: 64
 
 # model
@@ -36,4 +36,4 @@ model_kwargs:
   optimizer: "adam"
   scheduler: True
   warmup_epochs: 20
-  label_smoothing: 0.0
+  label_smoothing: 0.4

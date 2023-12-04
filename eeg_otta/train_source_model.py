@@ -14,7 +14,7 @@ from eeg_otta.utils.seed import seed_everything
 
 CHECKPOINT_PATH = os.path.join(Path(__file__).resolve().parents[1], "checkpoints")
 CONFIG_DIR = os.path.join(Path(__file__).resolve().parents[1], "configs")
-DEFAULT_CONFIG = "bcic2a_within_basenet.yaml"
+DEFAULT_CONFIG = "bcic2a_loso_basenet.yaml"
 
 
 def train_source_model(config):
@@ -47,7 +47,8 @@ def train_source_model(config):
         trainer = Trainer(
             callbacks=[checkpoint_cb],
             max_epochs=config["max_epochs"],
-            logger=False
+            logger=False,
+            num_sanity_val_steps=0
         )
 
         # set subject_id
@@ -60,6 +61,7 @@ def train_source_model(config):
         # test model
         test_results = trainer.test(model, datamodule)
         test_accs.append(test_results[0]["test_acc"])
+        print(f"source accuracy subject {subject_id}: {100 *test_accs[-1]:.2f}%")
 
     print(f"source accuracy: {100 *np.mean(test_accs):.2f}%")
 
