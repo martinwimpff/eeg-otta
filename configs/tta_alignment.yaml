@@ -1,0 +1,6 @@
+source_run: "src-bcic2a_within_2023-12-04_09-11-21"
+tta_method: "alignment"
+tta_config:
+  alignment: "euclidean"
+  averaging_method: "equal"
+  buffer_length: 64
