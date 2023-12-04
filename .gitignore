@@ -1,6 +1,4 @@
 *.exe
-eeg-otta-env/
-checkpoints/
 .idea/
 
 # Byte-compiled / optimized / DLL files
