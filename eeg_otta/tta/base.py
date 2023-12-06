@@ -24,7 +24,6 @@ class TTAMethod(nn.Module):
     def forward(self, x):
 
         if x.shape[0] == 1:  # Only single-sample test-time adaptation allowed
-
             # add sample to buffer, replace the oldest sample if buffer is full
             if self.input_buffer is None:
                 self.input_buffer = x

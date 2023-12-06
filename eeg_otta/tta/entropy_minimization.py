@@ -37,10 +37,8 @@ class EntropyMinimization(TTAMethod):
         return outputs
 
     def configure_model(self):
-        """Configure model for use with tent."""
         self.model.eval()  # eval mode to avoid using dropout during test-time
         self.model.requires_grad_(True)
-        # configure norm for tent updates: force batch statistics
         for nm, m in self.model.named_modules():
             if isinstance(m, nn.BatchNorm2d):
                 # force use of batch stats in train and eval modes
