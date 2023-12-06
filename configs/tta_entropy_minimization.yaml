@@ -1,5 +1,6 @@
 source_run: "src-bcic2a_loso_2023-12-04_14-41-13"
 tta_method: "entropy_minimization"
+continual: false
 tta_config:
   alignment: "riemann" # [False, "euclidean", "riemann"]
   averaging_method: "ema"  # ["equal", "linear", "ema"]

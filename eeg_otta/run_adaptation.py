@@ -36,7 +36,7 @@ def run_adaptation(config):
     source_config["preprocessing"]["batch_size"] = 1
     datamodule = datamodule_cls(source_config["preprocessing"], subject_ids=subject_ids)
 
-    test_accs = []
+    cal_accs, test_accs = [], []
     for version, subject_id in enumerate(subject_ids):
         seed_everything(source_config["seed"])
 
@@ -52,11 +52,18 @@ def run_adaptation(config):
 
         model = tta_cls(model, config["tta_config"], datamodule.info)
 
+        if config.get("continual", False):
+            cal_acc = get_accuracy(model, datamodule.calibration_dataloader(), device)
+            cal_accs.append(cal_acc)
+            print(f"cal_acc subject {subject_id}: {100 * cal_accs[-1]:.2f}%")
+
         acc = get_accuracy(model, datamodule.test_dataloader(), device)
         test_accs.append(acc)
         print(f"test_acc subject {subject_id}: {100 *test_accs[-1]:.2f}%")
 
     # print overall test accuracy
+    if config.get("continual", False):
+        print(f"cal_acc: {100 * np.mean(cal_accs):.2f}")
     print(f"test_acc: {100 * np.mean(test_accs):.2f}")
 
 
