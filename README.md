@@ -13,9 +13,11 @@ _Note: you can also use poetry for the installation_
 
 _Note: you can also use one of the checkpoints in the [checkpoints directory](checkpoints)_
 ### Run the online test-time adaptation
-- run [run_adaptation.py](eeg_otta/run_adaptation.py) with the `--config` of your choice (one of the [configs](configs) starting with `tta`)
+- run [run_adaptation.py](eeg_otta/run_adaptation.py) with the `--config` and `source_run` of your choice (one of the [configs](configs) starting with `tta`)
+- the setting (cross-session or cross-subject/ cross-subject continual) is dependent on your checkpoint i.e. 
+whether the within-subject dataset (`_within`) or the leave-one-subject-out (`_loso`) dataset was used. 
+- To choose between the cross-subject and cross-subject continual setting, modify the `continual` parameter in the TTA config file (cross-subject is the default).
 
-_Note: check the `source_run` parameter in the yaml file_
 
 ## Citation
 If you find this repository useful, please cite our work
