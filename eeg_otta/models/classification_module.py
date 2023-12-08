@@ -28,18 +28,9 @@ class ClassificationModule(pl.LightningModule):
         return self.model(x)
 
     def configure_optimizers(self):
-        betas = self.hparams.get("beta_1", 0.9), self.hparams.get("beta_2", 0.999)
         if self.hparams.optimizer == "adam":
             optimizer = torch.optim.Adam(self.parameters(), lr=self.hparams.lr,
-                                         betas=betas,
                                          weight_decay=self.hparams.weight_decay)
-        elif self.hparams.optimizer == "adamW":
-            optimizer = torch.optim.AdamW(self.parameters(), lr=self.hparams.lr,
-                                          betas=betas,
-                                          weight_decay=self.hparams.weight_decay)
-        elif self.hparams.optimizer == "sgd":
-            optimizer = torch.optim.SGD(self.parameters(), lr=self.hparams.lr,
-                                        weight_decay=self.hparams.weight_decay)
         else:
             raise NotImplementedError
         if self.hparams.scheduler:
