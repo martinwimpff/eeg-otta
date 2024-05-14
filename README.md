@@ -1,6 +1,6 @@
 # Calibration-free online test-time adaptation for electroencephalography motor imagery decoding
 
-This is the official repository to the paper [Calibration-free online test-time adaptation for electroencephalography motor imagery decoding](https://arxiv.org/abs/2311.18520). The implementation is based on [mariodoebler/test-time-adaptation](https://github.com/mariodoebler/test-time-adaptation). Additionally we use [BaseNet](https://arxiv.org/abs/2310.11198) from this [repository](https://github.com/martinwimpff/channel-attention).
+This is the official repository to the paper [Calibration-free online test-time adaptation for electroencephalography motor imagery decoding](https://ieeexplore.ieee.org/abstract/document/10480468). The implementation is based on [mariodoebler/test-time-adaptation](https://github.com/mariodoebler/test-time-adaptation). Additionally we use [BaseNet](https://iopscience.iop.org/article/10.1088/1741-2552/ad48b9/meta) from this [repository](https://github.com/martinwimpff/channel-attention).
 
 ## Usage
 ### Installation
@@ -22,10 +22,12 @@ whether the within-subject dataset (`_within`) or the leave-one-subject-out (`_l
 ## Citation
 If you find this repository useful, please cite our work
 ```
-@article{wimpff2023calibration,
+@inproceedings{wimpff2024calibration,
   title={Calibration-free online test-time adaptation for electroencephalography motor imagery decoding},
   author={Wimpff, Martin and D{\"o}bler, Mario and Yang, Bin},
-  journal={arXiv preprint arXiv:2311.18520},
-  year={2023}
+  booktitle={2024 12th International Winter Conference on Brain-Computer Interface (BCI)},
+  pages={1--6},
+  year={2024},
+  organization={IEEE}
 }
 ```
